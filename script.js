@@ -1,5 +1,6 @@
 let score = 0;
 let qCount = 1;
+let answerSelected = false;
 
 let correctSound = new Audio("check-mark_oPG7Xo5.mp3");
 let incorrectSound = new Audio("negative-effect.mp3");
@@ -96,26 +97,48 @@ function answerHandler(corId, incId1, incId2, incId3) {
 }
 
 function correctAnswerHandler(corId, incId1, incId2, incId3) {
+    if (answerSelected) {return};
+    answerSelected = true;
+    
     correctSound.play();
     score += 10;
     qCount += 1;
     let scoreCount = document.getElementById('points');
     scoreCount.textContent = `Score: ${score}`
+
     answerHandler(corId, incId1, incId2, incId3);
+
     document.getElementById(corId).classList.remove('HoverClass1');
+    document.getElementById(corId).removeEventListener('click', correctAnswerHandler);
+
     document.getElementById(incId1).classList.remove('HoverClass1');
+    document.getElementById(incId1).removeEventListener('click', incorrectAnswerHandler);
+
     document.getElementById(incId2).classList.remove('HoverClass1');
+    document.getElementById(incId2).removeEventListener('click', incorrectAnswerHandler);
+
     document.getElementById(incId3).classList.remove('HoverClass1');
+    document.getElementById(incId3).removeEventListener('click', incorrectAnswerHandler);
 }
 
 function incorrectAnswerHandler(corId, incId1, incId2, incId3) {
+    if (answerSelected) {return};
+    answerSelected = true;
     incorrectSound.play();
     qCount += 1;
     answerHandler(corId, incId1, incId2, incId3);
+
     document.getElementById(corId).classList.remove('HoverClass1');
+    document.getElementById(corId).removeEventListener('click', correctAnswerHandler);
+
     document.getElementById(incId1).classList.remove('HoverClass1');
+    document.getElementById(incId1).removeEventListener('click', incorrectAnswerHandler);
+
     document.getElementById(incId2).classList.remove('HoverClass1');
+    document.getElementById(incId2).removeEventListener('click', incorrectAnswerHandler);
+
     document.getElementById(incId3).classList.remove('HoverClass1');
+    document.getElementById(incId3).removeEventListener('click', incorrectAnswerHandler);
 }
 
 
@@ -207,6 +230,7 @@ function endScreen() {
 
 }
 
+
 function nextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < quizData.length) {
@@ -218,6 +242,7 @@ function nextQuestion() {
 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('next')) {
+        answerSelected = false;
         nextQuestion();
     }
 })
