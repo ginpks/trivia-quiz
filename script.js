@@ -1,6 +1,9 @@
 let score = 0;
 let qCount = 1;
 
+let correctSound = new Audio("check-mark_oPG7Xo5.mp3");
+let incorrectSound = new Audio("negative-effect.mp3");
+
 function generateQuiz() {
     const body = document.querySelector('body');
     body.innerHTML = "";
@@ -93,6 +96,7 @@ function answerHandler(corId, incId1, incId2, incId3) {
 }
 
 function correctAnswerHandler(corId, incId1, incId2, incId3) {
+    correctSound.play();
     score += 10;
     qCount += 1;
     let scoreCount = document.getElementById('points');
@@ -105,6 +109,7 @@ function correctAnswerHandler(corId, incId1, incId2, incId3) {
 }
 
 function incorrectAnswerHandler(corId, incId1, incId2, incId3) {
+    incorrectSound.play();
     qCount += 1;
     answerHandler(corId, incId1, incId2, incId3);
     document.getElementById(corId).classList.remove('HoverClass1');
