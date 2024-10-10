@@ -152,7 +152,7 @@ main {
         margin-left: 10vh;
         margin-right: 10vh;
         margin-top: 5vh;
-        height: 30vh;
+        height: 25vh;
     }
 
     .intro-container h1 {
@@ -165,11 +165,74 @@ main {
 
     .button-container {
         height: 5vh;
-        width: fit-content;
     }
 
-    .quiz-container h1 {
-
+    .start {
+        font-size: 20px;
+        padding: 15px;
+        border-radius: 5px
+    }
+    .score {
         font-size: 10px;
+    }
+
+    .count {
+        font-size: 10px;
+    }
+
+    .quiz-container {
+       width: 25vh; 
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       border-radius: 5px;
+       border-width: 10px;
+    }
+    .question {
+        font-size: 12px;
+
+    }
+
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        margin: 5vh;
+
+    }
+    .answer-container {
+        display: grid;
+        grid-template-columns: repeat(2, 10em);
+        grid-auto-rows: 11em;
+        gap: 1rem;
+        justify-content: center;
+        margin: 2rem;
+        width: fit-content;
+    }
+    
+    .btn {
+        width: 10rem;
+        background-color: #E5D4ED;
+        border-radius: 20px;
+        border-style: none;
+        border: solid 5px #FFFD82;
+        font-family: "Candal", sans-serif;
+    }
+
+    .next-container button {
+        font-size: 15px;
+        border-radius: 5px;
+    }
+
+
+    .info {
+        font-size: 10px;
+        height: 75vh;
+    }
+
+    #home {
+        font-size: 15px;
+        margin: 3rem;
     }
 }
